@@ -1,0 +1,90 @@
+﻿#container-riepilogo {
+    padding-top: 25px;
+    overflow: hidden;
+}
+
+ol.check-list li {
+    border: 1.5px solid #333;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    box-sizing: border-box;
+    display: block;
+    margin: 10px 0;
+    padding: 5px 10px;
+    text-decoration: none;
+    /* max-width: 400px; */
+}
+
+    ol.check-list li.colum {
+        border: 1.5px solid #333;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -o-border-radius: 10px;
+        -ms-border-radius: 10px;
+        box-sizing: border-box;
+        display: block;
+        margin: 10px 10px;
+        padding: 10px 10px;
+        text-decoration: none;
+        max-width: 47%;
+        background: #fdfdfd;
+    }
+
+.riepilogo-domanda {
+    margin: 10px 0;
+    font-size: 1.0rem;
+}
+
+.riepilogo-buttons i {
+    text-align: center;
+    font-size: 2rem;
+    color: #28BF8D;
+}
+
+.button-non-conformita {
+    background: #007bff;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex; /* or inline-flex */
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.riepilogo-conformita {
+    padding-top: 8px;
+    font-size: 0.9rem;
+}
+
+hr {
+    border: 0;
+    height: 1.4px;
+    background: #ccc;
+    /* background-image: linear-gradient(to right, #ccc, #333, #ccc); */
+}
+
+.button-top {
+    position: fixed;
+    top: 110px;
+}
+
+.button-bottom {
+    position: fixed;
+    bottom: 80px;
+}
+
+#content {
+    overflow: auto;
+    height: 700px;
+}
+
+.label-data {
+    color: #222222;
+    font-size: 16px;
+    padding-left: 5px;
+}

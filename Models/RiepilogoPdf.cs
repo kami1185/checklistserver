@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace CheckList.Models
+{
+    public class RiepilogoPdf
+    {
+        //public string idpaziente { get; set; }
+        //public string nome { get; set; }
+        //public string cognome { get; set; }
+        //public string sesso { get; set; }
+        //public string codiceFiscale { get; set; }
+        //public string procedura { get; set; }
+        public string checkId { get; set; }
+        public string domandaId { get; set; }
+        public string faseId { get; set; }
+        public string domanda { get; set; }
+        public string noconformitaId { get; set; }
+        public string risposta { get; set; }
+        public List<noconformita> testonc { get; set; }
+    }
+}
