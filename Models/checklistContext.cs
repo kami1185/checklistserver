@@ -17,6 +17,7 @@ namespace CheckList.Models
         {
         }
 
+        public virtual DbSet<cartella> cartella { get; set; }
         public virtual DbSet<checklist> checklist { get; set; }
         public virtual DbSet<domande> domande { get; set; }
         public virtual DbSet<dottori> dottori { get; set; }
@@ -24,8 +25,10 @@ namespace CheckList.Models
         public virtual DbSet<infermieri> infermieri { get; set; }
         public virtual DbSet<noconformita> noconformita { get; set; }
         public virtual DbSet<paziente> paziente { get; set; }
+        public virtual DbSet<percorsoassistenziale> percorsoassistenziale { get; set; }
         public virtual DbSet<reparto> reparto { get; set; }
         public virtual DbSet<riepilogo> riepilogo { get; set; }
+        public virtual DbSet<unitaoperativa> unitaoperativa { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -39,6 +42,32 @@ namespace CheckList.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Latin1_General_CI_AS");
+
+            modelBuilder.Entity<cartella>(entity =>
+            {
+                entity.Property(e => e.dataPianificata).HasColumnType("date");
+
+                entity.Property(e => e.diagnosi)
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.indicazioniRicovero)
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.percorsoAssistenziale)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.unitaOperativa)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.idPazienteNavigation)
+                    .WithMany(p => p.cartella)
+                    .HasForeignKey(d => d.idPaziente)
+                    .HasConstraintName("FK_cartella_paziente");
+            });
 
             modelBuilder.Entity<checklist>(entity =>
             {
@@ -134,20 +163,23 @@ namespace CheckList.Models
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
+                entity.Property(e => e.dataNascita).HasColumnType("date");
+
                 entity.Property(e => e.nome)
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
-                entity.Property(e => e.numeroCartella)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.procedura)
-                    .HasMaxLength(500)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.sesso)
                     .HasMaxLength(50)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<percorsoassistenziale>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.percorso)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
             });
 
@@ -183,6 +215,15 @@ namespace CheckList.Models
                     .HasForeignKey(d => d.idNoconformita)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_riepilogo_noconformita");
+            });
+
+            modelBuilder.Entity<unitaoperativa>(entity =>
+            {
+                entity.Property(e => e.id).ValueGeneratedNever();
+
+                entity.Property(e => e.unita)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -27,6 +27,11 @@ namespace CheckList
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+//////////************* Creiamo la regola per abilitare CORS **************///////////////////
+            services.AddTransient<IPazienteCheckListService, PazienteCheckListService>();
+            services.AddSingleton<IConfiguration>(Configuration);
+/// ///////////////////////////////////////////////////////////////////////////////////////////
+
             services.AddControllersWithViews();
 
 //////////************* Creiamo la regola per abilitare CORS **************///////////////////
@@ -65,9 +70,7 @@ namespace CheckList
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
             // aggiungiamo la regola CORS create precedentemente 

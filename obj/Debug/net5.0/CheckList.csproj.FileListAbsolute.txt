@@ -33,8 +33,12 @@ E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\n
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\Newtonsoft.Json.dll
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\Oracle.ManagedDataAccess.dll
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\System.Diagnostics.PerformanceCounter.dll
+E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\System.DirectoryServices.dll
+E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\System.DirectoryServices.Protocols.dll
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\System.Runtime.Caching.dll
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
@@ -48,13 +52,16 @@ E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\n
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.0\System.DirectoryServices.dll
+E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.0\System.DirectoryServices.Protocols.dll
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\obj\Debug\net5.0\CheckList.csprojAssemblyReference.cache
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\obj\Debug\net5.0\CheckList.GeneratedMSBuildEditorConfig.editorconfig
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\obj\Debug\net5.0\CheckList.AssemblyInfoInputs.cache
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\obj\Debug\net5.0\CheckList.AssemblyInfo.cs
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\obj\Debug\net5.0\CheckList.csproj.CoreCompileInputs.cache
-E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\obj\Debug\net5.0\CheckList.MvcApplicationPartsAssemblyInfo.cache
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\obj\Debug\net5.0\CheckList.RazorAssemblyInfo.cache
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\obj\Debug\net5.0\CheckList.RazorAssemblyInfo.cs
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\obj\Debug\net5.0\staticwebassets\CheckList.StaticWebAssets.Manifest.cache
@@ -78,4 +85,3 @@ E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\obj\Debug\n
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\obj\Debug\net5.0\ref\CheckList.dll
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\obj\Debug\net5.0\CheckList.pdb
 E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\obj\Debug\net5.0\CheckList.genruntimeconfig.cache
-E:\Progetto Policlinico\KIND-DAMA-master2\webapp\Checklist\CheckList\obj\Debug\net5.0\CheckList.csprojAssemblyReference.cache

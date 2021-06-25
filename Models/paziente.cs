@@ -9,6 +9,7 @@ namespace CheckList.Models
     {
         public paziente()
         {
+            cartella = new HashSet<cartella>();
             checklist = new HashSet<checklist>();
         }
 
@@ -17,9 +18,9 @@ namespace CheckList.Models
         public string cognome { get; set; }
         public string sesso { get; set; }
         public string codiceFiscale { get; set; }
-        public string procedura { get; set; }
-        public string numeroCartella { get; set; }
+        public DateTime? dataNascita { get; set; }
 
+        public virtual ICollection<cartella> cartella { get; set; }
         public virtual ICollection<checklist> checklist { get; set; }
     }
 }

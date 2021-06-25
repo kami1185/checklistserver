@@ -11,6 +11,9 @@ namespace CheckList
 {
     public class Program
     {
+
+        //creare il modello entity framework 
+        // Scaffold-DbContext "Server=localhost;Database=checklist;user=sa;password=root;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -UseDatabaseNames -NoPluralize -force
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

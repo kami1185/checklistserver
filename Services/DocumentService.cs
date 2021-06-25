@@ -24,12 +24,11 @@ namespace CheckList.Services
         }
 
         public byte[] GeneratePdfFromString(paziente paziente_data, JArray checklist)
-        { 
+        {
 
-			foreach (JObject item in checklist) // <-- Note that here we used JObject instead of usual JProperty
-			{
+            foreach (JObject item in checklist) // <-- Note that here we used JObject instead of usual JProperty
+            {
                 string domanda = item.GetValue("domanda").ToString();
-                //string titolo = item.GetValue("titolo").ToString();
                 JToken risposte = item.GetValue("risposte");
                 foreach (JObject risposta in risposte)
                 {
@@ -37,7 +36,7 @@ namespace CheckList.Services
                 }
             }
 
-			string nome_paziente = paziente_data.nome +" " + paziente_data.cognome;
+            string nome_paziente = paziente_data.nome +" " + paziente_data.cognome;
 
 			System.Diagnostics.Debug.WriteLine("fasi: " + checklist);
 
@@ -166,7 +165,7 @@ namespace CheckList.Services
 					                
 				            </ol>
 			            </div>
-                        ", paziente_data.nome.ToUpper(), paziente_data.cognome.ToUpper(), paziente_data.sesso.ToUpper(), paziente_data.codiceFiscale.ToUpper(), paziente_data.procedura);
+                        ", paziente_data.nome.ToUpper(), paziente_data.cognome.ToUpper(), paziente_data.sesso.ToUpper(), paziente_data.codiceFiscale.ToUpper());
 
 							foreach (JObject item in checklist)
 							{

@@ -119,7 +119,7 @@ namespace CheckList.Controllers
                                         && p.nome.Contains(searchValue.Trim())
                                         || p.cognome.Contains(searchValue.Trim()) 
                                         || p.codiceFiscale.Contains(searchValue.Trim())
-                                        orderby ch.data ascending
+                                        orderby ch.data descending
                                       //|| string.Concat(p.nome, " ", p.cognome).Contains(searchValue)
                                       select new
                                         {
@@ -145,7 +145,7 @@ namespace CheckList.Controllers
                                      join ch in db.checklist on p.id equals ch.idPaziente
                                      where ch.data == startDate &&
                                         p.id == ch.idPaziente
-                                        orderby ch.data ascending
+                                        orderby ch.data descending
                                      select new
                                      {
                                          ch.id,
@@ -171,7 +171,7 @@ namespace CheckList.Controllers
                         var query = (from p in db.paziente
                                         join ch in db.checklist on p.id equals ch.idPaziente
                                      where p.id == ch.idPaziente
-                                        orderby ch.data ascending
+                                        orderby ch.data descending
                                      select new
                                      {
                                          ch.id,
@@ -225,9 +225,7 @@ namespace CheckList.Controllers
                                           id = p.id,
                                           nome = p.nome,
                                           cognome = p.cognome,
-                                          sesso = p.sesso,
-                                          codiceFiscale = p.codiceFiscale,
-                                          procedura = p.procedura
+                                          codiceFiscale = p.codiceFiscale
 
                                       }).SingleOrDefault();
 
