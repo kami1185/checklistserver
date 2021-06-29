@@ -16,7 +16,6 @@ namespace CheckList.Models
         public int id { get; set; }
         public string nome { get; set; }
         public string cognome { get; set; }
-        public string sesso { get; set; }
         public string codiceFiscale { get; set; }
         public DateTime? dataNascita { get; set; }
 

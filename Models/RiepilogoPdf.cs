@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace CheckList.Models
 {
+
     public class RiepilogoPdf
     {
         //public string idpaziente { get; set; }
@@ -21,4 +22,18 @@ namespace CheckList.Models
         public string risposta { get; set; }
         public List<noconformita> testonc { get; set; }
     }
+
+    // classe usata per inviare i dati ottenuti dal database
+    // alle classi RiepilogoController
+    public class PazienteCheckListPDF
+    {
+        public string Nome { get; set; }
+        public string Cognome { get; set; }
+        public string DataNascista { get; set; }
+        public string DataRicovero { get; set; }
+        //public string CodiceFiscale { get; set; }
+        public string Diagnosi { get; set; }
+        public string Percorso { get; set; }
+    }
+
 }

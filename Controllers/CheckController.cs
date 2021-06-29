@@ -90,13 +90,14 @@ namespace CheckList.Controllers
                 dynamic json2 = JObject.Parse(json);
                 Console.WriteLine("Json: " + json2);
 
-                JArray jchecklist;
 
+                JArray jpaziente;
                 try
-                { jchecklist = json2.paziente; }
+                { jpaziente = json2.paziente; }
                 catch
-                { jchecklist = new JArray() { json2.paziente }; }
+                { jpaziente = new JArray() { json2.paziente }; }
 
+                JArray jchecklist;
                 try
                 { jchecklist = json2.checklist; }
                 catch
@@ -113,13 +114,19 @@ namespace CheckList.Controllers
 
                     var paziente = new paziente();
 
-                    for (int i = 0; i < jchecklist.Count; i++)
+                    for (int i = 0; i < jpaziente.Count; i++)
                     {
-                        dynamic element = jchecklist[i];
+                        dynamic element = jpaziente[i];
 
                         paziente.nome = element.nome;
                         paziente.cognome = element.cognome;
-                        paziente.dataNascita = element.datanascita;
+
+                        string aaa = element.datanascita;
+
+                        var itCulture = CultureInfo.GetCultureInfo("it-IT");
+                        string date = DateTime.Parse(aaa, itCulture).ToString("dd-MM-yy");
+                        
+                        paziente.dataNascita = DateTime.Parse(date);
                         paziente.codiceFiscale = "DFTMUY85A11Z604W";
 
                     }
@@ -142,6 +149,8 @@ namespace CheckList.Controllers
                         checklist.timeoutEnd = DateTime.Parse(element.timeoutEnd.Value);
                         checklist.signoutInit = DateTime.Parse(element.signoutInit.Value);
                         checklist.signoutEnd = DateTime.Parse(element.signoutEnd.Value);
+                        checklist.diagnosi = element.diagnosi;
+                        checklist.percorso = element.percorso;
                     }
                     db.checklist.Add(checklist);
                     db.SaveChanges();
@@ -302,7 +311,6 @@ namespace CheckList.Controllers
                         {
                             nome = data_json.paziente_nome,
                             cognome = data_json.paziente_cognome,
-                            sesso = data_json.paziente_sesso,
                             codiceFiscale = data_json.paziente_codicefiscale,
                             dataNascita = data_json.paziente_nascita
                         };

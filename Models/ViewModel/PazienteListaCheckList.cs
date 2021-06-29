@@ -18,6 +18,8 @@ namespace CheckList.Models.ViewModel
 
     }
 
+    // classe usata per inviare i dati ottenuti dal database
+    // alla classe PazienteCheckListService
     public class PazienteCheckList
     {
         public string Nome { get; set; }

@@ -13,6 +13,7 @@ using DinkToPdf.Contracts;
 using CheckList.Interfaces;
 using System.IO;
 using System.Collections;
+using CheckList.Models.ViewModel;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -210,72 +211,43 @@ namespace CheckList.Controllers
             try
             {
                 //List<paziente> paziente_data = new List<paziente>();
-                var paziente_data = new paziente();
+                //var paziente_data = new paziente();
                 List<RiepilogoPdf> checklist_data = new();
                 List<riepilogo> domande_data = new();
                 List<paziente> paziente_data2 = new();
                 using (checklistContext db = new())
                 {
 
-                    var paziente_data1 = (from p in db.paziente
-                                      join ch in db.checklist on p.id equals ch.idPaziente
-                                      where ch.id == id_checklist
-                                      select new paziente
-                                      {
-                                          id = p.id,
-                                          nome = p.nome,
-                                          cognome = p.cognome,
-                                          codiceFiscale = p.codiceFiscale
+                    PazienteCheckListPDF paziente_data = new();
 
-                                      }).SingleOrDefault();
+                    //var paziente_data1 = (from p in db.paziente
+                    //                  join ch in db.checklist on p.id equals ch.idPaziente
+                    //                  where ch.id == id_checklist
+                    //                  select new paziente
+                    //                  {
+                    //                      id = p.id,
+                    //                      nome = p.nome,
+                    //                      cognome = p.cognome,
+                    //                      dataNascita = p.dataNascita,
+                    //                      codiceFiscale = p.codiceFiscale
 
-                    string filename = paziente_data1.nome + " " + paziente_data1.cognome +".pdf";
+                    //                  }).SingleOrDefault();
 
-                    //int id_paziente2 = (int)paziente_data1.id;
+                    paziente_data = (from p in db.paziente
+                                join ch in db.checklist on p.id equals ch.idPaziente
+                                where ch.id == id_checklist
+                                select new PazienteCheckListPDF
+                                {
+                                    Nome = p.nome,
+                                    Cognome = p.cognome,
+                                    DataNascista = p.dataNascita.ToString(),
+                                    DataRicovero = ch.data.ToString(),
+                                    Diagnosi = ch.diagnosi,
+                                    Percorso = ch.percorso
 
+                                }).SingleOrDefault();
 
-                    //var query_id = (from ch in db.checklist
-                    //                join p in db.paziente on ch.idPaziente equals p.id
-                    //                where ch.id == id_checklist
-                    //                select new
-                    //                {
-                    //                    ch.idPaziente,
-                    //                    p.nome,
-                    //                    p.cognome,
-                    //                    p.sesso,
-                    //                    p.codiceFiscale,
-                    //                    p.procedura
-
-                    //                }).Single();
-
-                    //int id_paziente = (int)query_id.idPaziente;
-
-
-
-                    //var query = (from ch in db.checklist
-                    //             join p in db.paziente on ch.idPaziente equals p.id
-                    //             where p.id == id_paziente
-                    //             select new
-                    //             {
-                    //                 checkId = ch.id.ToString(),
-                    //                 nome = p.nome,
-                    //                 cognome = p.cognome,
-                    //                 sesso = p.sesso,
-                    //                 codiceFiscale = p.codiceFiscale,
-                    //                 procedura = p.procedura
-
-                    //             }).FirstOrDefault();
-
-                    ////int id_checklist = Int32.Parse(query.checkId);
-
-                    //paziente_data = new paziente()
-                    //{
-                    //    nome = query.nome,
-                    //    cognome = query.cognome,
-                    //    sesso = query.sesso,
-                    //    codiceFiscale = query.codiceFiscale,
-                    //    procedura = query.procedura
-                    //};
+                    string filename = paziente_data.Nome + " " + paziente_data.Cognome +".pdf";
 
                     checklist_data = (from r in db.riepilogo
                                       join ch in db.checklist on r.idChecklist equals ch.id
@@ -291,19 +263,6 @@ namespace CheckList.Controllers
                                           domanda = d.domanda,
                                           noconformitaId = nc.id.ToString(),
                                           risposta = nc.testo,
-
-                                          //r.idDomande,
-                                          //domande = new
-                                          //{
-                                          //    d.id,
-                                          //    d.idFase,
-                                          //    d.domanda
-                                          //},
-                                          //r.idNoconformita,
-                                          //noconformita = new
-                                          //{
-                                          //    nc.testo
-                                          //}
                                       }).ToList();
                     
 
@@ -333,50 +292,6 @@ namespace CheckList.Controllers
                             }
                         }
 
-                        //JArray fasi_checklist = new();
-                        //if (d.id == 1 || d.id == 12 || d.id == 19)
-                        //{
-                        //    //JArray fase_titolo = new JArray();
-                        //    foreach (fase fase in fasi)
-                        //    {
-                        //        string idfase = "";
-                        //        string titolo = "";
-                        //        if (fase.id == 1 && d.id == 1)
-                        //        {
-                        //            JObject fasi_check = new();
-                        //            fasi_check = new JObject
-                        //            {
-                        //                { "idfase", fase.id.ToString() },
-                        //                { "Titolo", fase.nome }
-                        //            };
-                        //            checklist.Add(fasi_check);
-                        //        }
-                        //        if (fase.id == 2 && d.id == 12)
-                        //        {
-                        //            JObject fasi_check = new();
-                        //            fasi_check = new JObject
-                        //            {
-                        //                { "idfase", fase.id.ToString() },
-                        //                { "Titolo", fase.nome }
-                        //            };
-                        //            checklist.Add(fasi_check);
-                        //        }
-                        //        if (fase.id == 3 && d.id == 19)
-                        //        {
-                        //            idfase = fase.id.ToString();
-                        //            titolo = fase.nome;
-                        //            JObject fasi_check = new();
-                        //            fasi_check = new JObject
-                        //            {
-                        //                { "idfase", fase.id.ToString() },
-                        //                { "titolo", fase.nome }
-                        //            };
-                        //            //fasi_checklist.Add(fasi_checklist);
-                        //            checklist.Add(fasi_check);
-                        //        }
-                        //    }
-                        //}
-
                         JObject questions = new();
                         questions = new JObject
                         {
@@ -391,7 +306,7 @@ namespace CheckList.Controllers
 
                     System.Diagnostics.Debug.WriteLine("fases: " + checklist);
 
-                    var pdfFile = _documentService.GeneratePdfFromString(paziente_data1, checklist);
+                    var pdfFile = _documentService.GeneratePdfFromString(paziente_data, checklist);
                     //return new FileContentResult(pdfFile, "application/pdf");
                     return File(pdfFile, "application/pdf", filename);
                 }

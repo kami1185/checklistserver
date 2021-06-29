@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CheckList.Services
@@ -74,6 +75,13 @@ namespace CheckList.Services
                         while (reader.Read())
                         {
                             System.Diagnostics.Debug.WriteLine("name: " + reader.GetString(0) + " cognome: " + reader.GetString(1) + "\n");
+
+                            string nome2 = reader.GetString(0);
+                            nome2 = nome2.Replace(" ", "-").Replace("'", "\\'");
+
+                            string cognome2 = reader.GetString(1);
+                            cognome2 = cognome2.Replace(" ", "-").Replace("'", "\\'");
+
                             PazienteList lstpaz = new()
                             {
                                 Nome = reader.GetString(0),
@@ -82,7 +90,8 @@ namespace CheckList.Services
                                 //Diagnosi = reader.GetString(3),
                                 //Stato = reader.GetString(6),
                                 Percorso = reader.GetString(4),
-                                Identifier = reader.GetString(0).Replace(" ", "-") + "," + reader.GetString(1).Replace(" ", "-") + "," + reader.GetString(2)
+                                //Identifier = reader.GetString(0).Replace(" ", "-") + "," + reader.GetString(1).Replace(" ", "-") + "," + reader.GetString(2)
+                                Identifier = nome2 + "," + cognome2 + "," + reader.GetString(2)
                             };
                             pazienteList.Add(lstpaz);
                         }
@@ -105,8 +114,16 @@ namespace CheckList.Services
             string json = JsonConvert.SerializeObject(paziente, Formatting.Indented);
             dynamic data_paziente = JObject.Parse(json);
 
-            string p_nome = data_paziente.nome;
-            string p_cognome = data_paziente.cognome;
+            string p_nome1 = data_paziente.nome;
+            string p_cognome1 = data_paziente.cognome;
+
+
+            //string p_nome2 = Regex.Replace(p_nome1, @"[^0-9]", "");
+
+            //p_nome1 = p_nome1.Replace("-", " ");
+
+            string p_nome = p_nome1.Replace("-", " ");
+            string p_cognome = p_cognome1.Replace("-", " ");
             string p_ricovero = data_paziente.data_ricovero;
 
             PazienteCheckList lstpaz = new();

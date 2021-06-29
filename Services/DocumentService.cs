@@ -23,22 +23,22 @@ namespace CheckList.Services
             //_razorRendererHelper = razorRendererHelper;
         }
 
-        public byte[] GeneratePdfFromString(paziente paziente_data, JArray checklist)
+        public byte[] GeneratePdfFromString(PazienteCheckListPDF paziente_data, JArray checklist)
         {
 
-            foreach (JObject item in checklist) // <-- Note that here we used JObject instead of usual JProperty
-            {
-                string domanda = item.GetValue("domanda").ToString();
-                JToken risposte = item.GetValue("risposte");
-                foreach (JObject risposta in risposte)
-                {
-                    string risp = risposta.GetValue("testo").ToString();
-                }
-            }
+            //foreach (JObject item in checklist) // <-- Note that here we used JObject instead of usual JProperty
+            //{
+            //    string domanda = item.GetValue("domanda").ToString();
+            //    JToken risposte = item.GetValue("risposte");
+            //    foreach (JObject risposta in risposte)
+            //    {
+            //        string risp = risposta.GetValue("testo").ToString();
+            //    }
+            //}
 
-            string nome_paziente = paziente_data.nome +" " + paziente_data.cognome;
+            string nome_paziente = paziente_data.Nome +" " + paziente_data.Cognome;
 
-			System.Diagnostics.Debug.WriteLine("fasi: " + checklist);
+			//System.Diagnostics.Debug.WriteLine("fasi: " + checklist);
 
 			var htmlContent = new StringBuilder();
             //var htmlContent = ($@"
@@ -140,7 +140,13 @@ namespace CheckList.Services
 				        color: #222222;
 				        font-size: 1.4rem;
 				        padding-left: 5px;
+						padding-top: 6px;
 			        }
+
+					textarea{
+						color: #222222;
+				        font-size: 1.4rem;	
+					}
 		        </style>
             </head>
             <body>
@@ -158,14 +164,16 @@ namespace CheckList.Services
                                 htmlContent.AppendFormat(@"
                                     <label class='label-data'>Nome:           <span >{0}</span></label><br>
 						            <label class='label-data'>Cognome:        <span class='label-data'>{1}</span></label><br>
-						            <label class='label-data'>Sesso:          <span class='label-data'>{2}</span></label><br>
-                                    <label class='label-data'>Codice Fiscale: <span class='label-data'>{3}</span></label><br>
-                                    <label class='label-data'>Procedura:      <span class='label-data'>{4}</span></label><br>
-                                </li>
+									<label class='label-data'>Data nascita:   <span class='label-data'>{2}</span></label><br>
+                                    <label class='label-data'>Data ricovero: <span class='label-data'>{3}</span></label><br>
+									<label class='label-data'>Percorso: <span class='label-data'>{4}</span></label><br>
+									<label class='label-data'>Diagnosi: </label><textarea  class='form-control' rows='3' cols='75%' style='border: solid 0px; vertical-align: top;'>{5}</textarea>
+								  </li>
 					                
 				            </ol>
 			            </div>
-                        ", paziente_data.nome.ToUpper(), paziente_data.cognome.ToUpper(), paziente_data.sesso.ToUpper(), paziente_data.codiceFiscale.ToUpper());
+                        ", paziente_data.Nome.ToUpper(), paziente_data.Cognome.ToUpper(), paziente_data.DataNascista, paziente_data.DataRicovero.ToUpper(),
+						   paziente_data.Percorso.ToUpper(), paziente_data.Diagnosi.ToUpper());
 
 							foreach (JObject item in checklist)
 							{

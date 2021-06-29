@@ -22,6 +22,8 @@ namespace CheckList.Models
         public DateTime? timeoutEnd { get; set; }
         public DateTime? signoutInit { get; set; }
         public DateTime? signoutEnd { get; set; }
+        public string diagnosi { get; set; }
+        public string percorso { get; set; }
 
         public virtual paziente idPazienteNavigation { get; set; }
         public virtual reparto idRepartoNavigation { get; set; }

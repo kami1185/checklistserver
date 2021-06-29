@@ -73,6 +73,14 @@ namespace CheckList.Models
             {
                 entity.Property(e => e.data).HasColumnType("datetime");
 
+                entity.Property(e => e.diagnosi)
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.percorso)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.signinEnd).HasColumnType("datetime");
 
                 entity.Property(e => e.signinInit).HasColumnType("datetime");
@@ -167,10 +175,6 @@ namespace CheckList.Models
 
                 entity.Property(e => e.nome)
                     .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.sesso)
-                    .HasMaxLength(50)
                     .IsUnicode(false);
             });
 

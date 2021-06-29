@@ -10,7 +10,7 @@ namespace CheckList.Interfaces
 {
     public interface IDocumentService
     {
-        byte[] GeneratePdfFromString(paziente data, JArray checklist);
+        byte[] GeneratePdfFromString(PazienteCheckListPDF data, JArray checklist);
 
         //byte[] GeneratePdfFromRazorView();
     }
